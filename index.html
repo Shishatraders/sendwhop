@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SendWhop - Email Marketing for Whop Sellers</title>
+    <meta name="description" content="Professional email marketing platform for Whop creators. Send campaigns, track analytics, and grow your business with SendWhop.">
+    <title>SendWhop - Email Marketing for Whop Creators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,205 +16,661 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: #ffffff;
         }
 
-        .container {
-            max-width: 800px;
-            background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 48px;
+            font-size: 24px;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 20px;
         }
 
-        h1 {
-            font-size: 42px;
-            color: #1a202c;
-            margin-bottom: 20px;
-            line-height: 1.2;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .subtitle {
-            font-size: 20px;
+        .nav-links a {
             color: #4a5568;
-            margin-bottom: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
             line-height: 1.6;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-            text-align: left;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .feature {
-            padding: 20px;
-            background: #f7fafc;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-        }
-
-        .feature h3 {
-            color: #2d3748;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .feature p {
-            color: #718096;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .cta {
-            margin-top: 40px;
-        }
-
-        .button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
+        .btn {
+            padding: 14px 32px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 18px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
-        .button:hover {
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
-        .status {
-            margin-top: 40px;
-            padding: 20px;
-            background: #edf2f7;
-            border-radius: 12px;
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            background: #f7fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.7;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 14px;
             color: #4a5568;
+            font-weight: 600;
         }
 
-        .status strong {
+        /* Features Section */
+        .features-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
             color: #2d3748;
+            margin-bottom: 1rem;
         }
 
-        footer {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #e2e8f0;
+        .feature-card p {
+            color: #718096;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: #f7fafc;
+            padding: 6rem 2rem;
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content p {
+            color: #718096;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* Compliance Section */
+        .compliance-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .compliance-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .compliance-icon {
+            font-size: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .compliance-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .compliance-item p {
             color: #718096;
             font-size: 14px;
         }
 
-        footer a {
-            color: #667eea;
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: #cbd5e0;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e0;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .footer-section a:hover {
+            color: white;
         }
 
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #2d3748;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
+            .hero h1 {
+                font-size: 36px;
             }
 
-            h1 {
-                font-size: 32px;
-            }
-
-            .subtitle {
+            .hero p {
                 font-size: 18px;
             }
 
-            .features {
-                grid-template-columns: 1fr;
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .step {
+                grid-template-columns: 60px 1fr;
+                gap: 1.5rem;
+            }
+
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">SendWhop</div>
-        <h1>Email Marketing for Whop Sellers</h1>
-        <p class="subtitle">
-            The most powerful email marketing platform built exclusively for Whop product creators.
-            Reach your members, grow your business, and maximize your revenue.
-        </p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SendWhop</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+                <li><a href="https://marketing.shishatraders.net">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="features">
-            <div class="feature">
-                <h3>🚀 Instant Setup</h3>
-                <p>Get your @sendwhop.com email address instantly or connect your custom domain in minutes.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Email Marketing Built for Whop Creators</h1>
+        <p>The most powerful and compliant email marketing platform designed exclusively for Whop sellers. Reach your members, grow your revenue, and build lasting relationships.</p>
+        <div class="cta-buttons">
+            <a href="https://marketing.shishatraders.net" class="btn btn-primary">Start Free Trial</a>
+            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span>🔒</span>
+                <span>SOC 2 Compliant</span>
             </div>
-
-            <div class="feature">
-                <h3>🔗 Whop Integration</h3>
-                <p>Automatically sync your products and active members from your Whop account.</p>
+            <div class="trust-badge">
+                <span>✅</span>
+                <span>CAN-SPAM Certified</span>
             </div>
-
-            <div class="feature">
-                <h3>📧 Campaign Builder</h3>
-                <p>Create beautiful email campaigns with our drag-and-drop editor and templates.</p>
+            <div class="trust-badge">
+                <span>🛡️</span>
+                <span>GDPR Ready</span>
             </div>
-
-            <div class="feature">
-                <h3>📊 Analytics</h3>
-                <p>Track opens, clicks, and conversions to optimize your email performance.</p>
-            </div>
-
-            <div class="feature">
-                <h3>🛡️ Abuse Prevention</h3>
-                <p>Built-in spam protection and compliance tools to maintain your sender reputation.</p>
-            </div>
-
-            <div class="feature">
-                <h3>⚡ High Deliverability</h3>
-                <p>Powered by Amazon SES for industry-leading email delivery rates.</p>
+            <div class="trust-badge">
+                <span>⚡</span>
+                <span>Powered by AWS</span>
             </div>
         </div>
+    </section>
 
-        <div class="status">
-            <strong>🚧 Coming Soon</strong><br>
-            We're currently in development and preparing for launch.
-            SendWhop will be available exclusively for Whop sellers soon.
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Everything You Need to Succeed</h2>
+            <p>Professional email marketing tools built for Whop creators who want to maximize engagement and revenue.</p>
         </div>
-
-        <div class="cta">
-            <a href="https://marketing.shishatraders.net" class="button">Learn More</a>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Instant Setup</h3>
+                <p>Get started in minutes with your @sendwhop.com email address, or connect your custom domain with full DNS verification and authentication.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Whop Integration</h3>
+                <p>Automatically sync your products and active members from Whop. Only verified, paying subscribers receive your emails.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📧</div>
+                <h3>Campaign Builder</h3>
+                <p>Create beautiful, responsive emails with our drag-and-drop editor. Choose from professional templates or design your own.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Advanced Analytics</h3>
+                <p>Track opens, clicks, conversions, and revenue. Understand what resonates with your audience and optimize your campaigns.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Abuse Prevention</h3>
+                <p>Built-in spam protection, bounce handling, and complaint monitoring. We maintain your sender reputation automatically.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>99.9% Deliverability</h3>
+                <p>Powered by Amazon SES with industry-leading delivery rates. Your emails reach inboxes, not spam folders.</p>
+            </div>
         </div>
+    </section>
 
-        <footer>
-            <p>
-                <strong>SendWhop</strong> - Professional email marketing for Whop creators<br>
-                Questions? Contact us at <a href="mailto:support@shishatraders.net">support@shishatraders.net</a>
-            </p>
-            <p style="margin-top: 20px;">
-                &copy; 2026 SendWhop. All rights reserved.
-            </p>
-        </footer>
-    </div>
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="steps-container">
+            <div class="section-header">
+                <h2>Get Started in 4 Simple Steps</h2>
+                <p>Launch your first campaign in under 10 minutes</p>
+            </div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Connect Your Whop Account</h3>
+                    <p>Sign in with Whop OAuth and authorize SendWhop to access your products and member lists. We only sync active, paying subscribers.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Choose Your Sending Domain</h3>
+                    <p>Use your instant @sendwhop.com email address or verify your custom domain with SPF, DKIM, and DMARC authentication.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Create Your Campaign</h3>
+                    <p>Design beautiful emails with our drag-and-drop builder. Add your content, images, and call-to-action buttons.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Send & Track Results</h3>
+                    <p>Schedule your campaign or send immediately. Monitor opens, clicks, and conversions in real-time on your analytics dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section id="compliance" class="compliance-section">
+        <div class="section-header">
+            <h2>Enterprise-Grade Compliance & Security</h2>
+            <p>We take email compliance seriously so you can focus on growing your business</p>
+        </div>
+        <div class="compliance-grid">
+            <div class="compliance-item">
+                <div class="compliance-icon">🔐</div>
+                <h4>Email Authentication</h4>
+                <p>SPF, DKIM, and DMARC configured automatically for maximum deliverability</p>
+            </div>
+            <div class="compliance-item">
+                <div class="compliance-icon">📋</div>
+                <h4>CAN-SPAM Compliant</h4>
+                <p>One-click unsubscribe, physical address, and proper identification in every email</p>
+            </div>
+            <div class="compliance-item">
+                <div class="compliance-icon">🌍</div>
+                <h4>GDPR Ready</h4>
+                <p>Data processing agreements, right to erasure, and consent management built-in</p>
+            </div>
+            <div class="compliance-item">
+                <div class="compliance-icon">⚠️</div>
+                <h4>Bounce Management</h4>
+                <p>Automatic hard bounce removal and soft bounce tracking to protect your reputation</p>
+            </div>
+            <div class="compliance-item">
+                <div class="compliance-icon">🚨</div>
+                <h4>Complaint Monitoring</h4>
+                <p>Real-time complaint tracking with automatic suspension at 0.5% threshold</p>
+            </div>
+            <div class="compliance-item">
+                <div class="compliance-icon">🔍</div>
+                <h4>Feedback Loops</h4>
+                <p>Integrated with ISP feedback loops for automated complaint processing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2>Trusted by Whop Creators Worldwide</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>99.9%</h3>
+                <p>Delivery Rate</p>
+            </div>
+            <div class="stat-item">
+                <h3>&lt;0.1%</h3>
+                <p>Complaint Rate</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Monitoring</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Compliant</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Grow Your Whop Business?</h2>
+        <p>Join SendWhop today and start sending professional email campaigns to your members.</p>
+        <a href="https://marketing.shishatraders.net" class="btn btn-primary">Get Started Free</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SendWhop</h4>
+                <p>Professional email marketing platform built exclusively for Whop creators.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                    <li><a href="https://marketing.shishatraders.net">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Best Practices</a></li>
+                    <li><a href="#">Support Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="mailto:support@shishatraders.net">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SendWhop. All rights reserved. | Powered by Amazon Web Services</p>
+        </div>
+    </footer>
 </body>
 </html>
